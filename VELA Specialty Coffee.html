@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VELA Specialty Coffee · Lisboa</title>
+<meta name="description" content="Café de especialidade, brunch e pastelaria artesanal em Lisboa. Um espaço onde o tempo abranda.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3ECE0;--card:#FBF8F2;--ink:#1E1A17;--muted:#6F6359;--brown:#6B4A32;--sand:#D9C7AA;--line:#DCCFBA;--btn:#1E1A17;--btn-ink:#F3ECE0;
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;--sans:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1A1613;--card:#231E1A;--ink:#F1E8DA;--muted:#A99B8B;--brown:#C49A74;--sand:#4A3B2E;--line:#352C24;--btn:#F1E8DA;--btn-ink:#1A1613}}
+:root[data-theme="dark"]{--bg:#1A1613;--card:#231E1A;--ink:#F1E8DA;--muted:#A99B8B;--brown:#C49A74;--sand:#4A3B2E;--line:#352C24;--btn:#F1E8DA;--btn-ink:#1A1613}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2.8rem,8vw,5.6rem)}
+h2{font-size:clamp(2rem,4.5vw,3.2rem);margin-bottom:1rem}
+h3{font-size:1.6rem}
+p{margin:0 0 1rem}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.5rem}
+section{padding:5.5rem 0}
+.lead{font-size:1.05rem;color:var(--muted);max-width:52ch}
+:focus-visible{outline:2px solid var(--brown);outline-offset:3px}
+
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--serif);font-size:1.7rem;font-weight:600;letter-spacing:.2em;text-decoration:none}
+nav ul{display:flex;gap:1.6rem;list-style:none;margin:0;padding:0}
+nav ul a{text-decoration:none;font-size:.92rem;color:var(--muted);transition:color .2s}
+nav ul a:hover{color:var(--ink)}
+@media(max-width:640px){nav ul{gap:1rem}nav ul li:nth-child(2){display:none}}
+
+/* buttons */
+.btns{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.8rem}
+.btn{display:inline-block;padding:.85rem 1.5rem;border-radius:8px;background:var(--btn);color:var(--btn-ink);text-decoration:none;font-weight:500;font-size:.95rem;border:1px solid var(--btn);transition:transform .2s,opacity .2s}
+.btn:hover{transform:translateY(-2px);opacity:.9}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+
+/* hero */
+.hero{padding:5rem 0 4rem}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:center}
+.hero h1 em{font-style:italic;color:var(--brown)}
+.hero p{font-size:1.15rem;color:var(--muted);max-width:44ch;margin-top:1.4rem}
+.cup{background:var(--sand);border-radius:200px 200px 16px 16px;aspect-ratio:4/5;display:grid;place-items:center;position:relative;overflow:hidden}
+.cup svg{width:62%}
+.steam path{fill:none;stroke:var(--brown);stroke-width:3;stroke-linecap:round;opacity:0;animation:steam 4s ease-in-out infinite}
+.steam path:nth-child(2){animation-delay:1.2s}.steam path:nth-child(3){animation-delay:2.4s}
+@keyframes steam{0%{opacity:0;transform:translateY(10px)}40%{opacity:.8}100%{opacity:0;transform:translateY(-14px)}}
+@media(max-width:780px){.hero .wrap{grid-template-columns:1fr}.cup{max-width:340px;aspect-ratio:1/1}}
+@media(prefers-reduced-motion:reduce){.steam path{animation:none;opacity:.6}html{scroll-behavior:auto}.btn{transition:none}}
+
+/* sobre */
+.about .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:3rem}
+.about p{color:var(--muted);max-width:56ch}
+.about .quote{font-family:var(--serif);font-size:1.5rem;color:var(--ink);font-style:italic;line-height:1.3}
+@media(max-width:780px){.about .wrap{grid-template-columns:1fr;gap:1.2rem}}
+
+/* menu */
+.menu{background:var(--card);border-block:1px solid var(--line)}
+.tabs{display:flex;gap:.5rem;margin:1.6rem 0 1rem}
+.tab{font:500 .95rem var(--sans);padding:.55rem 1.2rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--btn);color:var(--btn-ink);border-color:var(--btn)}
+.items{list-style:none;margin:0;padding:0;max-width:720px}
+.items li{display:grid;grid-template-columns:1fr auto;gap:.2rem 1rem;padding:1.1rem 0;border-bottom:1px solid var(--line)}
+.items b{font-family:var(--serif);font-size:1.4rem;font-weight:500}
+.items span{color:var(--muted);font-size:.92rem;grid-column:1}
+.items .price{grid-column:2;grid-row:1/3;align-self:center;font-weight:500}
+.note{font-size:.82rem;color:var(--muted);margin-top:1.2rem}
+
+/* galeria */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:.8rem;margin-top:2rem}
+.tile{border-radius:10px;padding:.9rem;display:flex;align-items:flex-end;font-size:.85rem;color:#FBF8F2}
+.t1{grid-column:span 2;grid-row:span 2;background:linear-gradient(160deg,#8a6446,#4a3425)}
+.t2{background:linear-gradient(160deg,#c9b08c,#a88660)}
+.t3{background:linear-gradient(160deg,#3b2f27,#1E1A17)}
+.t4{grid-row:span 2;background:linear-gradient(160deg,#a6896a,#6B4A32)}
+.t5{background:linear-gradient(160deg,#d8c6a8,#bfa682);color:#1E1A17}
+.t6{grid-column:span 2;background:linear-gradient(160deg,#5c4332,#2d221b)}
+@media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}.t1,.t6{grid-column:span 2}}
+
+/* diferenciais */
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:2.2rem}
+.values h3{font-size:1.4rem;margin-bottom:.4rem}
+.values p{color:var(--muted);font-size:.95rem}
+.values div{border-top:2px solid var(--brown);padding-top:1rem}
+@media(max-width:780px){.values{grid-template-columns:1fr 1fr}}
+
+/* testemunhos */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+blockquote{margin:0;padding:1.6rem;background:var(--card);border:1px solid var(--line);border-radius:12px}
+blockquote p{font-family:var(--serif);font-size:1.25rem;line-height:1.35}
+blockquote footer{font-size:.9rem;color:var(--muted)}
+@media(max-width:780px){.quotes{grid-template-columns:1fr}}
+
+/* contactos */
+.contact{background:var(--sand)}
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact dl{margin:0}
+.contact dt{font-weight:600;margin-top:1.1rem}
+.contact dd{margin:0;color:var(--muted)}
+.contact .contact-card{background:var(--card);border-radius:14px;padding:2rem}
+.contact label{display:block;font-size:.9rem;font-weight:500;margin:.9rem 0 .3rem}
+.contact input,.contact textarea{width:100%;padding:.7rem .8rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+.contact button{margin-top:1.2rem;cursor:pointer;font:500 .95rem var(--sans)}
+#ok{margin-top:.8rem;color:var(--brown);font-weight:500;min-height:1.4em}
+@media(max-width:780px){.contact .wrap{grid-template-columns:1fr}}
+
+footer.site{padding:3rem 0 2.5rem;border-top:1px solid var(--line)}
+footer.site .wrap{display:flex;flex-wrap:wrap;gap:1.5rem 3rem;justify-content:space-between;align-items:center}
+footer.site ul{display:flex;gap:1.2rem;flex-wrap:wrap;list-style:none;margin:0;padding:0;font-size:.9rem;color:var(--muted)}
+footer.site ul a{text-decoration:none}
+footer.site .tag{font-family:var(--serif);font-style:italic;font-size:1.3rem}
+.fine{width:100%;font-size:.8rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav aria-label="Principal">
+  <a class="logo" href="#inicio">VELA</a>
+  <ul><li><a href="#sobre">Sobre nós</a></li><li><a href="#menu">Menu</a></li><li><a href="#galeria">Galeria</a></li><li><a href="#contactos">Contactos</a></li></ul>
+</nav></div></header>
+
+<main id="inicio">
+<section class="hero"><div class="wrap">
+  <div>
+    <h1>O teu próximo café <em>favorito</em> está aqui.</h1>
+    <p>Café de especialidade, brunch preparado com ingredientes frescos e um espaço onde o tempo abranda. Descobre a VELA.</p>
+    <div class="btns"><a class="btn" href="#menu">Explorar menu</a><a class="btn ghost" href="#contactos">Visitar-nos</a></div>
+  </div>
+  <div class="cup" role="img" aria-label="Chávena de café a fumegar">
+    <svg viewBox="0 0 200 200" fill="none">
+      <g class="steam"><path d="M80 60c-10-12 10-18 0-32"/><path d="M100 60c-10-12 10-18 0-32"/><path d="M120 60c-10-12 10-18 0-32"/></g>
+      <path d="M40 80h110v50a40 40 0 0 1-40 40H80a40 40 0 0 1-40-40z" fill="#FBF8F2"/>
+      <path d="M150 95h12a18 18 0 0 1 0 36h-16" stroke="#FBF8F2" stroke-width="9" stroke-linecap="round"/>
+      <ellipse cx="95" cy="82" rx="55" ry="7" fill="#6B4A32"/>
+      <ellipse cx="95" cy="184" rx="75" ry="6" fill="#6B4A32" opacity=".25"/>
+    </svg>
+  </div>
+</div></section>
+
+<section class="about" id="sobre"><div class="wrap">
+  <div>
+    <h2>Criámos um espaço para apreciar o simples.</h2>
+    <p class="quote">Não queremos que venhas apenas tomar café. Queremos que te sintas bem por estar aqui.</p>
+  </div>
+  <div>
+    <p>Na VELA, acreditamos que os melhores momentos não precisam de ser complicados. Um bom café, ingredientes de qualidade e um espaço acolhedor são suficientes para transformar um dia comum.</p>
+    <p>Nasceu da paixão pelo café e da vontade de criar um lugar diferente: um espaço onde cada detalhe importa, desde a origem dos nossos grãos até à forma como recebemos cada pessoa.</p>
+  </div>
+</div></section>
+
+<section class="menu" id="menu"><div class="wrap">
+  <h2>Feito para saborear.</h2>
+  <div class="tabs" role="tablist" aria-label="Categorias do menu">
+    <button class="tab" role="tab" id="t-cafe" aria-selected="true" aria-controls="lista">Café</button>
+    <button class="tab" role="tab" id="t-brunch" aria-selected="false" aria-controls="lista">Brunch</button>
+  </div>
+  <ul class="items" id="lista" role="tabpanel"></ul>
+  <p class="note">Os produtos e preços são fictícios, criados apenas para o teste.</p>
+</div></section>
+
+<section id="galeria"><div class="wrap">
+  <h2>Um espaço para ficar.</h2>
+  <p class="lead">Luz natural, materiais simples, aromas familiares e uma atmosfera pensada para tornar cada visita especial.</p>
+  <div class="grid" aria-label="Galeria (espaços reservados para fotografias)">
+    <div class="tile t1">Interior, luz da manhã</div><div class="tile t2">Flat white</div><div class="tile t3">Balcão</div>
+    <div class="tile t4">Brunch</div><div class="tile t5">Croissant</div><div class="tile t6">Clientes e conversas</div>
+  </div>
+  <p class="note">Espaços reservados: aqui entrariam fotografias do interior, dos cafés, da comida e dos clientes.</p>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>O que nos distingue</h2>
+  <div class="values">
+    <div><h3>Café de especialidade</h3><p>Grãos cuidadosamente selecionados e preparados.</p></div>
+    <div><h3>Ingredientes frescos</h3><p>Produtos de qualidade e preparados diariamente.</p></div>
+    <div><h3>Ambiente acolhedor</h3><p>Um espaço para relaxar, trabalhar ou conversar.</p></div>
+    <div><h3>Feito com intenção</h3><p>Atendimento próximo e atenção a cada detalhe.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>O que dizem sobre nós.</h2>
+  <div class="quotes">
+    <blockquote><p>“Finalmente encontrei um sítio onde o café é tão bom como o ambiente. É impossível vir só uma vez.”</p><footer>Mariana F.</footer></blockquote>
+    <blockquote><p>“O brunch é incrível e o espaço é perfeito para começar o dia com calma.”</p><footer>João R.</footer></blockquote>
+    <blockquote><p>“O meu novo sítio favorito para trabalhar fora de casa. Café excelente e ambiente tranquilo.”</p><footer>Inês C.</footer></blockquote>
+  </div>
+  <p class="note">Testemunhos fictícios para efeitos de demonstração.</p>
+</div></section>
+
+<section class="contact" id="contactos"><div class="wrap">
+  <div>
+    <h2>Estamos à tua espera.</h2>
+    <dl>
+      <dt>Morada</dt><dd>Rua fictícia do Café, 24, Lisboa</dd>
+      <dt>Horário</dt><dd>Segunda a sexta: 08:00 – 18:00<br>Sábado e domingo: 09:00 – 19:00</dd>
+      <dt>Telefone</dt><dd><a href="tel:+351910000000">+351 910 000 000</a></dd>
+      <dt>Email</dt><dd><a href="mailto:hello@velacoffee.pt">hello@velacoffee.pt</a></dd>
+    </dl>
+    <div class="btns"><a class="btn" href="#contactos">Ver localização</a><a class="btn ghost" href="#contactos">Instagram</a></div>
+  </div>
+  <div class="contact-card">
+    <h3>Contactar</h3>
+    <div>
+      <label for="n">Nome</label><input id="n" autocomplete="name">
+      <label for="e">Email</label><input id="e" type="email" autocomplete="email">
+      <label for="m">Mensagem</label><textarea id="m" rows="4"></textarea>
+      <button class="btn" id="send" type="button">Enviar mensagem</button>
+      <div id="ok" role="status"></div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <a class="logo" href="#inicio">VELA</a>
+  <ul><li><a href="#inicio">Home</a></li><li><a href="#sobre">Sobre nós</a></li><li><a href="#menu">Menu</a></li><li><a href="#contactos">Contactos</a></li><li><a href="#contactos">Instagram</a></li><li><a href="#inicio">Política de privacidade</a></li><li><a href="#inicio">Termos e condições</a></li></ul>
+  <span class="tag">Café bom. Dias melhores.</span>
+  <p class="fine">Projeto de teste: negócio, preços e testemunhos fictícios.</p>
+</div></footer>
+
+<script>
+const data={
+  cafe:[["Espresso","Café intenso e equilibrado","1,40 €"],["Americano","Espresso com água quente","2,00 €"],["Cappuccino","Espresso, leite vaporizado e espuma","3,20 €"],["Flat White","Espresso duplo com leite cremoso","3,50 €"],["Iced Latte","Café, leite e gelo","3,80 €"]],
+  brunch:[["Avocado Toast","Abacate, pão artesanal e ovos","8,90 €"],["Pancakes","Pancakes com fruta e mel","7,50 €"],["Croissant artesanal","Croissant acabado de preparar","2,80 €"],["Bowl VELA","Iogurte, granola e fruta fresca","6,90 €"]]
+};
+const list=document.getElementById("lista"),tabs=document.querySelectorAll(".tab");
+function show(k){
+  list.innerHTML=data[k].map(i=>`<li><b>${i[0]}</b><span>${i[1]}</span><div class="price">${i[2]}</div></li>`).join("");
+  tabs.forEach(t=>t.setAttribute("aria-selected",t.id==="t-"+k));
+  list.setAttribute("aria-labelledby","t-"+k);
+}
+tabs.forEach(t=>t.addEventListener("click",()=>show(t.id.slice(2))));
+show("cafe");
+document.getElementById("send").addEventListener("click",()=>{
+  const n=document.getElementById("n").value.trim(),e=document.getElementById("e").value.trim(),m=document.getElementById("m").value.trim();
+  document.getElementById("ok").textContent=(n&&e&&m)?"Mensagem enviada (simulação). Obrigado, "+n+"!":"Preenche o nome, o email e a mensagem para enviar.";
+});
+</script>
+</body>
+</html>
